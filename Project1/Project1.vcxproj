@@ -11,8 +11,8 @@
     </ProjectConfiguration>
   </ItemGroup>
   <PropertyGroup Label="Globals">
-    <ProjectGuid>{C6372925-FA7C-420C-A413-0883A00EAC57}</ProjectGuid>
-    <RootNamespace>Battleship</RootNamespace>
+    <ProjectGuid>{1A12FAF1-EC6C-49E3-AD11-A9156AA1D93C}</ProjectGuid>
+    <RootNamespace>Project1</RootNamespace>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
@@ -64,11 +64,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="..\Cell.h" />
-    <ClInclude Include="..\Ship.h" />
-  </ItemGroup>
-  <ItemGroup>
-    <ClCompile Include="..\Source1.cpp" />
+    <ClCompile Include="Source.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
