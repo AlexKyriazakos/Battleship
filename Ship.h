@@ -13,7 +13,7 @@ public:
 
 
 	double currenthp, maxhp, treasure;
-	int speed;
+	int speed, posx, posy;
 };
 
 
