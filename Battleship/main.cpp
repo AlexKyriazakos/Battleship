@@ -1,6 +1,8 @@
 #include <iostream>
 #include "Cell.h"
 
+#define echo(x) std::cout<<#x<<" = "<<x<<std::endl
+
 //Create Dummy class derivative of ship
 class DummyShip : public Ship
 {
@@ -11,6 +13,40 @@ public:
 	virtual void action()
 	{
 		//do nothing
+	}
+
+	virtual std::string getName(bool extended)
+	{
+		if (extended)
+			return (std::string("Dummy"));
+		return(std::string("D"));
+	}
+
+	virtual int getType()
+	{
+		return DUMMY;
+	}
+};
+
+class DummierShip : public Ship
+{
+
+public:
+
+	//Why virtual again????
+	virtual void action()
+	{
+		//do nothing
+	}
+
+	virtual std::string getName(bool extended)
+	{
+		return extended ? std::string("Dummier") : std::string("D");
+	}
+
+	virtual int getType()
+	{
+		return DUMMIER;
 	}
 };
 
@@ -37,7 +73,24 @@ int main()
 	// Vector example (bad)
 	// http://stackoverflow.com/questions/6491251/multi-dimensional-vector-initialization
 	// explanation
-	std::vector< std::vector< Cell> > grid(12, std::vector<Cell>(12)); //Same size
+	//std::vector< std::vector< Cell> > grid(12, std::vector<Cell>(12)); //Same size
+
+	std::vector< std::vector< Cell> > grid(12, std::vector<Cell>(12));
+
+	echo(grid[0][0]);
+
+	std::vector<Ship*> ships(2);
+
+	//init ships
+	ships[0] = new DummierShip;
+	ships[1] = new DummyShip;
+
+	for (int i = 0; i != ships.size(); i++)
+	{
+		if (ships[i]->getType() == DUMMY)
+			std::cout << "we have a dummy" << std::endl;
+		break;
+	}
 
 	//Polymorphism
 	Ship* testShip = new DummyShip; //Why declare it Ship Pointer?
@@ -52,6 +105,7 @@ int main()
 
 	std::cout << grid[1][5]; //result of friend ostream operator <<
 
+	system("pause");
 	return 0;
 }
 

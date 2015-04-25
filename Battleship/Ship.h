@@ -12,12 +12,20 @@ struct Coords {
 	Coords() { row = 0; col=0; }
 };
 
+enum ShipType{
+	DUMMY = 0,
+	DUMMIER,
+	PEIRATIKO,
+	EMPORIKO,
+	NUMSHIPS
+};
+
 class Ship {
 
 public:
 
 	/** \brief Default Constructor */
-	Ship() {} //Will need to initialize members
+	Ship(); //Will need to initialize members
 
 	// Important
 	/** \brief Destructor */
@@ -30,6 +38,10 @@ public:
 	/** \brief Ship action method, pure virtual */
 	virtual void action() = 0;
 
+	virtual std::string getName(bool extended) = 0;
+
+	virtual int getType() = 0;
+
 	//////////////////////////////////////////////////////////////////////////
 	// Setters/Getters
 	// Note: Getters are const 
@@ -37,19 +49,19 @@ public:
 
 	void setSpeed(int speed_);
 
-	void incTreasure(int treasure_);
+	void incTreasure(double treasure_);
 
-	void decTreasure(int treasure_);
+	void decTreasure(double treasure_);
 
 	int getTreasure() const;
 
-	void incHP(int hp_);
+	void incHP(double hp_);
 
-	void decHP(int hp_);
+	void decHP(double hp_);
 
 	double getHP() const;
 	//////////////////////////////////////////////////////////////////////////
-
+	static int  shipsCreated;
 protected: //We want derivatives to have access to them, but users not
 
 	double		currentHp;

@@ -1,6 +1,7 @@
 #include "Ship.h"
 #include <cstdlib>
 
+int Ship::shipsCreated = 0;
 //Example implementation, real one has to check neighboring cells
 void Ship::move()
 {
@@ -14,9 +15,14 @@ void Ship::move()
 	location.row += b;
 }	
 
-void Ship::incHP(int hp_)
+void Ship::incHP(double hp_)
 {
 	currentHp += hp_;
+}
+
+void Ship::decHP(double hp_)
+{
+	currentHp -= hp_;
 }
 
 double Ship::getHP() const
@@ -33,4 +39,23 @@ void Ship::setSpeed(int speed_)
 {
 	speed = speed_;
 }
+
+Ship::Ship()
+{
+	location.row = 0;
+	location.col = 0;
+	shipsCreated++;
+}
+
+void Ship::incTreasure(double treasure_)
+{
+	treasure += treasure_;
+}
+
+void Ship::decTreasure(double treasure_)
+{
+	treasure -= treasure_;
+}
+
+
 //Implement Rest

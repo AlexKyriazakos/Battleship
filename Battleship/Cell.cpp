@@ -40,7 +40,7 @@ std::ostream& operator<<(std::ostream& os, const Cell& cell)
     os << "Weather\t\t:  " << cell.weather << std::endl;
 	os << "Treasure\t:  " << cell.treasure << std::endl;
 	os << "Port\t\t:  " << cell.port << std::endl;
-	os << "Ship\t\t:  " << cell.getShip() << " with speed: " << cell.getShip()->getSpeed() << std::endl;
+	os << "Ship\t\t:  " << cell.getShip() << std::endl;//<< cell.getShip()->getSpeed() << std::endl;
 	//TODO: Print out Rest of info
 
     return os;
