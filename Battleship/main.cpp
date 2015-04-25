@@ -4,6 +4,8 @@
 
 #define echo(x) std::cout<<#x<<" = "<<x<<std::endl
 
+#define GRIDSIZE 12
+
 
 //////////////////////////////////////////////////////////////////////////
 // main will not run
@@ -30,9 +32,9 @@ int main()
 	// explanation
 	//std::vector< std::vector< Cell> > grid(12, std::vector<Cell>(12)); //Same size
 
-	std::vector< std::vector< Cell> > grid(12, std::vector<Cell>(12));
+	std::vector< std::vector< Cell> > grid(GRIDSIZE, std::vector<Cell>(GRIDSIZE));
 
-
+	
 	std::vector<Ship*> ships(20);
 
 	//init ships and place them on the map
@@ -40,8 +42,6 @@ int main()
 	for (int i = 0; i != ships.size(); i++)
 	{
 		int x, y, t;
-		x = rand() % 12;
-		y = rand() % 12;
 		t = rand() % 4;
 		if (t == 0)
 		{
@@ -59,17 +59,27 @@ int main()
 		{
 			ships[i] = new ExplorerShip;
 		}
+		do
+		{
+			x = rand() % grid.size();
+			y = rand() % grid.size();
+		} while (grid[x][y].hasShip());
 		grid[x][y].setShip(ships[i]);
 		ships[i]->setLocation(x, y);
 	}
 
+	//insert random values on the Map for the Weather/Port/Treasure
+	//Print out the Map (grid) in the console and in a txt file
 	std::ofstream myfile;
 	myfile.open("test.txt", std::ios::out);
-	for (int i = 0; i != 12; ++i)
+	for (int i = 0; i != grid.size(); ++i)
 	{
-		for (int j = 0; j != 12; ++j)
+		for (int j = 0; j != grid.size(); ++j)
 		{
 			grid[i][j].setCoords(Coords(i, j));
+			grid[i][j].setPort(rand() % 2);
+			grid[i][j].setWeather((rand() % 10)+1);
+			grid[i][j].setTreasure(rand() % 2);
 			std::cout << grid[i][j] << std::endl;
 			myfile << grid[i][j] << std::endl;
 		}

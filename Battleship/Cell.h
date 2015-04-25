@@ -27,7 +27,7 @@ public:
 
 	void	setPort(bool port_);
 
-	void	setTreasure(int treasure_);
+	void	setTreasure(bool treasure_);
 
 	void	setCoords(Coords coords_);
 

@@ -37,6 +37,16 @@ void Cell::setCoords(Coords coords_)
 	coords = coords_;
 }
 
+bool Cell::hasShip() const
+{
+	return ship ? true : false;
+}
+
+void Cell::setTreasure(bool treasure_)
+{
+	treasure = treasure_;
+}
+
 //half-implemented << operator
 std::ostream& operator<<(std::ostream& os, const Cell& cell)
 {
