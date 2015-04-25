@@ -19,8 +19,18 @@ void Ship::incHP(int hp_)
 	currentHp += hp_;
 }
 
-int Ship::getHP() const
+double Ship::getHP() const
 {
 	return currentHp;
+}
+
+int Ship::getSpeed() const
+{
+	return speed;
+}
+
+void Ship::setSpeed(int speed_)
+{
+	speed = speed_;
 }
 //Implement Rest

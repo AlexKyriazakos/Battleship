@@ -32,7 +32,7 @@ int main()
 		test[n][m].treasure = true;
 		test[n][m].weather = 2;
 		};
-	*/
+		*/
 	
 	// Vector example (bad)
 	// http://stackoverflow.com/questions/6491251/multi-dimensional-vector-initialization
@@ -54,3 +54,24 @@ int main()
 
 	return 0;
 }
+
+/*
+int main()
+{
+	std::vector<int> a(12*12);
+	for (int n = 0; n != 12; ++n)
+	{
+		int t=1;
+		t = n*t;
+		for (std::vector<int>::iterator it = a.begin()+t; it != a.begin() + 12+t; ++it)
+		{
+			std::cout << ' ' << *it;
+		}
+		std::cout << '\n';
+	}
+	
+	
+
+	return 0;
+}
+*/

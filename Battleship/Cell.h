@@ -15,7 +15,7 @@ class Cell
 public:
 
 	/* \brief Default constructor with initialization list (??????) */
-	Cell() : weather(0), port(false), treasure(0), ship(NULL) {}
+	Cell() : weather(4), port(false), treasure(true), ship(NULL), coords() {}
 
 	//////////////////////////////////////////////////////////////////////////
 	// Setters/Getters

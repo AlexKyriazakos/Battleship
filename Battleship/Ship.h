@@ -8,6 +8,8 @@
 struct Coords {
 	int row;
 	int col;
+
+	Coords() { row = 0; col=0; }
 };
 
 class Ship {
@@ -45,7 +47,7 @@ public:
 
 	void decHP(int hp_);
 
-	int getHP() const;
+	double getHP() const;
 	//////////////////////////////////////////////////////////////////////////
 
 protected: //We want derivatives to have access to them, but users not

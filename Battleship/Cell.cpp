@@ -22,12 +22,25 @@ bool Cell::hasPort() const
 	return port;
 }
 
+Ship* Cell::getShip() const
+{
+	return ship;
+}
+
+void Cell::setShip(Ship* ship_)
+{
+	ship = ship_;
+}
+
 //half-implemented << operator
 std::ostream& operator<<(std::ostream& os, const Cell& cell)
 {
     os << "Cell \n"
-          "Location   :  [" << cell.coords.row << ", " << cell.coords.col << "]" << std::endl;
-    os << "Weather    :  " << cell.weather << std::endl;
+          "Location\t:  [" << cell.coords.row << ", " << cell.coords.col << "]" << std::endl;
+    os << "Weather\t\t:  " << cell.weather << std::endl;
+	os << "Treasure\t:  " << cell.treasure << std::endl;
+	os << "Port\t\t:  " << cell.port << std::endl;
+	os << "Ship\t\t:  " << cell.getShip() << " with speed: " << cell.getShip()->getSpeed() << std::endl;
 	//TODO: Print out Rest of info
 
     return os;
