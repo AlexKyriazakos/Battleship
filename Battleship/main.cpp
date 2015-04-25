@@ -1,54 +1,9 @@
 #include <iostream>
+#include <fstream>
 #include "Cell.h"
 
 #define echo(x) std::cout<<#x<<" = "<<x<<std::endl
 
-//Create Dummy class derivative of ship
-class DummyShip : public Ship
-{
-
-public:
-
-	//Why virtual again????
-	virtual void action()
-	{
-		//do nothing
-	}
-
-	virtual std::string getName(bool extended)
-	{
-		if (extended)
-			return (std::string("Dummy"));
-		return(std::string("D"));
-	}
-
-	virtual int getType()
-	{
-		return DUMMY;
-	}
-};
-
-class DummierShip : public Ship
-{
-
-public:
-
-	//Why virtual again????
-	virtual void action()
-	{
-		//do nothing
-	}
-
-	virtual std::string getName(bool extended)
-	{
-		return extended ? std::string("Dummier") : std::string("D");
-	}
-
-	virtual int getType()
-	{
-		return DUMMIER;
-	}
-};
 
 //////////////////////////////////////////////////////////////////////////
 // main will not run
@@ -77,33 +32,49 @@ int main()
 
 	std::vector< std::vector< Cell> > grid(12, std::vector<Cell>(12));
 
-	echo(grid[0][0]);
 
-	std::vector<Ship*> ships(2);
+	std::vector<Ship*> ships(20);
 
-	//init ships
-	ships[0] = new DummierShip;
-	ships[1] = new DummyShip;
-
+	//init ships and place them on the map
+	
 	for (int i = 0; i != ships.size(); i++)
 	{
-		if (ships[i]->getType() == DUMMY)
-			std::cout << "we have a dummy" << std::endl;
-		break;
+		int x, y, t;
+		x = rand() % 12;
+		y = rand() % 12;
+		t = rand() % 4;
+		if (t == 0)
+		{
+			ships[i] = new PirateShip;
+		}
+		else if (t == 1)
+		{
+			ships[i] = new CargoShip;
+		}
+		else if (t == 2)
+		{
+			ships[i] = new RepairShip;
+		}
+		else if (t == 3)
+		{
+			ships[i] = new ExplorerShip;
+		}
+		grid[x][y].setShip(ships[i]);
+		ships[i]->setLocation(x, y);
 	}
 
-	//Polymorphism
-	Ship* testShip = new DummyShip; //Why declare it Ship Pointer?
-	//DummyShip* testShip = new DummyShip;   //correct??
-
-	testShip->setSpeed(5); //set some speed
-
-	grid[1][5].setShip(testShip); //assign it to a cell
-
-	//Will print 5
-	std::cout << "Cells [1,5] Ship has speed: " << grid[1][5].getShip()->getSpeed() << std::endl;
-
-	std::cout << grid[1][5]; //result of friend ostream operator <<
+	std::ofstream myfile;
+	myfile.open("test.txt", std::ios::out);
+	for (int i = 0; i != 12; ++i)
+	{
+		for (int j = 0; j != 12; ++j)
+		{
+			grid[i][j].setCoords(Coords(i, j));
+			std::cout << grid[i][j] << std::endl;
+			myfile << grid[i][j] << std::endl;
+		}
+	}
+	myfile.close();
 
 	system("pause");
 	return 0;

@@ -69,7 +69,11 @@
     <ClCompile Include="main.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="CargoShip.h" />
     <ClInclude Include="Cell.h" />
+    <ClInclude Include="ExplorerShip.h" />
+    <ClInclude Include="RepairShip.h" />
+    <ClInclude Include="PirateShip.h" />
     <ClInclude Include="Ship.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

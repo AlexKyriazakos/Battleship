@@ -57,5 +57,15 @@ void Ship::decTreasure(double treasure_)
 	treasure -= treasure_;
 }
 
+void Ship::setLocation(Coords location_)
+{
+	location = location_;
+}
+
+void Ship::setLocation(int x_, int y_)
+{
+	location.col = x_;
+	location.row = y_;
+}
 
 //Implement Rest

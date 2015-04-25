@@ -9,14 +9,15 @@ struct Coords {
 	int row;
 	int col;
 
-	Coords() { row = 0; col=0; }
+	Coords() {}
+	Coords(int x,int y) { row = x; col=y; }
 };
 
 enum ShipType{
-	DUMMY = 0,
-	DUMMIER,
-	PEIRATIKO,
-	EMPORIKO,
+	PIRATE = 0,
+	CARGO,
+	REPAIR,
+	EXPLORER,
 	NUMSHIPS
 };
 
@@ -60,6 +61,10 @@ public:
 	void decHP(double hp_);
 
 	double getHP() const;
+
+	void setLocation(Coords location_);
+
+	void setLocation(int x_, int y_);
 	//////////////////////////////////////////////////////////////////////////
 	static int  shipsCreated;
 protected: //We want derivatives to have access to them, but users not

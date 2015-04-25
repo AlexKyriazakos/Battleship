@@ -32,6 +32,11 @@ void Cell::setShip(Ship* ship_)
 	ship = ship_;
 }
 
+void Cell::setCoords(Coords coords_)
+{
+	coords = coords_;
+}
+
 //half-implemented << operator
 std::ostream& operator<<(std::ostream& os, const Cell& cell)
 {
@@ -40,7 +45,11 @@ std::ostream& operator<<(std::ostream& os, const Cell& cell)
     os << "Weather\t\t:  " << cell.weather << std::endl;
 	os << "Treasure\t:  " << cell.treasure << std::endl;
 	os << "Port\t\t:  " << cell.port << std::endl;
-	os << "Ship\t\t:  " << cell.getShip() << std::endl;//<< cell.getShip()->getSpeed() << std::endl;
+	if (cell.getShip())
+		os << "We have a " << cell.getShip()->getName(true) << " ship" << std::endl;
+	else
+		os << "The Cell is empty" << std::endl;
+	//os << "Ship\t\t:  " << cell.getShip() << std::endl;//<< cell.getShip()->getSpeed() << std::endl;
 	//TODO: Print out Rest of info
 
     return os;
