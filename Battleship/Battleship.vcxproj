@@ -71,6 +71,7 @@
   <ItemGroup>
     <ClInclude Include="CargoShip.h" />
     <ClInclude Include="Cell.h" />
+    <ClInclude Include="Definitions.h" />
     <ClInclude Include="ExplorerShip.h" />
     <ClInclude Include="RepairShip.h" />
     <ClInclude Include="PirateShip.h" />

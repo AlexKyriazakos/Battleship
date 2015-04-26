@@ -44,6 +44,10 @@ Ship::Ship()
 {
 	location.row = 0;
 	location.col = 0;
+	speed = 2;
+	maxHp = 100;
+	currentHp = maxHp;
+	treasure = 0;
 	shipsCreated++;
 }
 
@@ -66,6 +70,20 @@ void Ship::setLocation(int x_, int y_)
 {
 	location.col = x_;
 	location.row = y_;
+}
+
+int Ship::getTreasure() const
+{
+	return treasure;
+}
+
+std::ostream& operator<<(std::ostream& os, const Ship& ship)
+{
+	os << ship.getName(true) << " Ship" << std::endl;
+	os << "-Speed    :" << ship.getSpeed() << std::endl;
+	os << "-HP       :" << ship.getHP() << std::endl;
+	os << "-Treasure :" << ship.getTreasure() << std::endl;
+	return os;
 }
 
 //Implement Rest

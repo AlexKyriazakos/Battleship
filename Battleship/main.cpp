@@ -1,10 +1,11 @@
 #include <iostream>
 #include <fstream>
+
 #include "Cell.h"
+#include "Definitions.h"
 
 #define echo(x) std::cout<<#x<<" = "<<x<<std::endl
 
-#define GRIDSIZE 12
 
 
 //////////////////////////////////////////////////////////////////////////
@@ -35,7 +36,7 @@ int main()
 	std::vector< std::vector< Cell> > grid(GRIDSIZE, std::vector<Cell>(GRIDSIZE));
 
 	
-	std::vector<Ship*> ships(20);
+	std::vector<Ship*> ships(SHIPS);
 
 	//init ships and place them on the map
 	
@@ -46,6 +47,7 @@ int main()
 		if (t == 0)
 		{
 			ships[i] = new PirateShip;
+			ships[i]->setSpeed(1);
 		}
 		else if (t == 1)
 		{
@@ -68,7 +70,32 @@ int main()
 		ships[i]->setLocation(x, y);
 	}
 
-	//insert random values on the Map for the Weather/Port/Treasure
+// Insert ports on random locations
+	for (int i = 0; i != int(PORT*GRIDSIZE*GRIDSIZE); i++)
+	{
+		int x, y;
+		do
+		{
+			x = rand() % grid.size();
+			y = rand() % grid.size();
+		} while (grid[x][y].hasPort());
+		grid[x][y].setPort(true);
+	}
+
+// Insert treasures on random locations
+	for (int i = 0; i != int(TREASURE*GRIDSIZE*GRIDSIZE); i++)
+	{
+		int x, y;
+		do
+		{
+			x = rand() % grid.size();
+			y = rand() % grid.size();
+		} while (grid[x][y].hasTreasure());
+		grid[x][y].setTreasure(true);
+	}
+
+
+	//insert random values on the Map for the Weather and coords on every cell
 	//Print out the Map (grid) in the console and in a txt file
 	std::ofstream myfile;
 	myfile.open("test.txt", std::ios::out);
@@ -77,15 +104,12 @@ int main()
 		for (int j = 0; j != grid.size(); ++j)
 		{
 			grid[i][j].setCoords(Coords(i, j));
-			grid[i][j].setPort(rand() % 2);
 			grid[i][j].setWeather((rand() % 10)+1);
-			grid[i][j].setTreasure(rand() % 2);
 			std::cout << grid[i][j] << std::endl;
 			myfile << grid[i][j] << std::endl;
 		}
 	}
 	myfile.close();
-
 	system("pause");
 	return 0;
 }

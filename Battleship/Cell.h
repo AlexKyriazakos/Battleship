@@ -19,7 +19,7 @@ class Cell
 public:
 
 	/* \brief Default constructor with initialization list (??????) */
-	Cell() : weather(4), port(false), treasure(true), ship(NULL), coords() {}
+	Cell() : weather(4), port(false), treasure(false), ship(NULL), coords() {}
 
 	//////////////////////////////////////////////////////////////////////////
 	// Setters/Getters
@@ -43,6 +43,8 @@ public:
 	Coords	getCoords() const;
 
 	bool	hasShip() const;
+
+	bool	hasTreasure() const;
 	//////////////////////////////////////////////////////////////////////////
 
 	//We make the std::ostream friend in order to let it read and printout

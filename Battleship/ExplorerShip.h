@@ -12,7 +12,7 @@ public:
 		//do nothing
 	}
 
-	virtual std::string getName(bool extended)
+	virtual std::string getName(bool extended) const
 	{
 		if (extended)
 			return (std::string("Explorer"));

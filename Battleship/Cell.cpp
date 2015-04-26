@@ -47,19 +47,24 @@ void Cell::setTreasure(bool treasure_)
 	treasure = treasure_;
 }
 
+bool Cell::hasTreasure() const
+{
+	return treasure;
+}
+
 //half-implemented << operator
 std::ostream& operator<<(std::ostream& os, const Cell& cell)
 {
     os << "Cell \n"
-          "Location\t:  [" << cell.coords.row << ", " << cell.coords.col << "]" << std::endl;
-    os << "Weather\t\t:  " << cell.weather << std::endl;
-	os << "Treasure\t:  " << cell.treasure << std::endl;
-	os << "Port\t\t:  " << cell.port << std::endl;
-	if (cell.getShip())
-		os << "We have a " << cell.getShip()->getName(true) << " ship" << std::endl;
+          "Location :  [" << cell.coords.row << ", " << cell.coords.col << "]" << std::endl;
+    os << "Weather  :  " << cell.weather << std::endl;
+	os << "Treasure :  " << cell.treasure << std::endl;
+	os << "Port     :  " << cell.port << std::endl;
+	if (cell.hasShip())
+		os << "The Cell has a " <<*cell.ship << std::endl;
+		//os << "We have a " << cell.getShip()->getName(true) << " ship" << std::endl;
 	else
 		os << "The Cell is empty" << std::endl;
-	//os << "Ship\t\t:  " << cell.getShip() << std::endl;//<< cell.getShip()->getSpeed() << std::endl;
 	//TODO: Print out Rest of info
 
     return os;

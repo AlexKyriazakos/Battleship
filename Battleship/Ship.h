@@ -39,7 +39,7 @@ public:
 	/** \brief Ship action method, pure virtual */
 	virtual void action() = 0;
 
-	virtual std::string getName(bool extended) = 0;
+	virtual std::string getName(bool extended) const = 0;
 
 	virtual int getType() = 0;
 
@@ -67,6 +67,8 @@ public:
 	void setLocation(int x_, int y_);
 	//////////////////////////////////////////////////////////////////////////
 	static int  shipsCreated;
+
+	friend std::ostream& operator<<(std::ostream& os, const Ship& dt);
 protected: //We want derivatives to have access to them, but users not
 
 	double		currentHp;
