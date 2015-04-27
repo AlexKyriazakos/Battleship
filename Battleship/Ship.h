@@ -65,10 +65,15 @@ public:
 	void setLocation(Coords location_);
 
 	void setLocation(int x_, int y_);
+
+	Coords getLocation() const;
 	//////////////////////////////////////////////////////////////////////////
 	static int  shipsCreated;
 
 	friend std::ostream& operator<<(std::ostream& os, const Ship& dt);
+
+	Coords		location;
+	int			number;
 protected: //We want derivatives to have access to them, but users not
 
 	double		currentHp;
@@ -76,7 +81,7 @@ protected: //We want derivatives to have access to them, but users not
 	double		treasure;
 	
 	int			speed;
-	Coords		location;
+	
 
 };
 

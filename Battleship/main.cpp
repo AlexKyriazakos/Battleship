@@ -6,6 +6,21 @@
 
 #define echo(x) std::cout<<#x<<" = "<<x<<std::endl
 
+void findEmptyCells(Cell cell)
+{
+	Coords loc(cell.getCoords());
+	for (int i = loc.row - 1; i <= loc.row + 1; ++i)
+	{
+		for (int j = loc.col - 1; j <= loc.col + 1; ++j)
+		{
+
+		}
+
+
+
+
+	}
+}
 
 
 //////////////////////////////////////////////////////////////////////////
@@ -15,18 +30,7 @@
 
 int main()
 {
-	//Not working anymore
-	/*
-	Cell test[12][12];
-	for (int n = 0; n<12; n++)
-		for (int m = 0; m<12; m++)
-		{
-		test[n][m].port = true;
-		test[n][m].ship = false;
-		test[n][m].treasure = true;
-		test[n][m].weather = 2;
-		};
-		*/
+	
 	
 	// Vector example (bad)
 	// http://stackoverflow.com/questions/6491251/multi-dimensional-vector-initialization
@@ -68,10 +72,11 @@ int main()
 		} while (grid[x][y].hasShip());
 		grid[x][y].setShip(ships[i]);
 		ships[i]->setLocation(x, y);
+		ships[i]->number = i;
 	}
 
 // Insert ports on random locations
-	for (int i = 0; i != int(PORT*GRIDSIZE*GRIDSIZE); i++)
+	for (int i = 0; i != int(PORT*GRIDSIZE*GRIDSIZE); ++i)
 	{
 		int x, y;
 		do
@@ -83,7 +88,7 @@ int main()
 	}
 
 // Insert treasures on random locations
-	for (int i = 0; i != int(TREASURE*GRIDSIZE*GRIDSIZE); i++)
+	for (int i = 0; i != int(TREASURE*GRIDSIZE*GRIDSIZE); ++i)
 	{
 		int x, y;
 		do
@@ -103,13 +108,24 @@ int main()
 	{
 		for (int j = 0; j != grid.size(); ++j)
 		{
-			grid[i][j].setCoords(Coords(i, j));
+			grid[i][j].setCoords(Coords(j, i));
 			grid[i][j].setWeather((rand() % 10)+1);
 			std::cout << grid[i][j] << std::endl;
 			myfile << grid[i][j] << std::endl;
 		}
 	}
 	myfile.close();
+
+	std::cout << *ships[0] << std::endl;
+	ships[0]->move();
+	std::cout << *ships[0] << std::endl;
+
+
+
+
+
+
+
 	system("pause");
 	return 0;
 }

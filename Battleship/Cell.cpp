@@ -52,11 +52,17 @@ bool Cell::hasTreasure() const
 	return treasure;
 }
 
+Coords Cell::getCoords() const
+{
+	return coords;
+}
+
+
 //half-implemented << operator
 std::ostream& operator<<(std::ostream& os, const Cell& cell)
 {
     os << "Cell \n"
-          "Location :  [" << cell.coords.row << ", " << cell.coords.col << "]" << std::endl;
+          "Location :  [" << cell.coords.row << "," << cell.coords.col << "]" << std::endl;
     os << "Weather  :  " << cell.weather << std::endl;
 	os << "Treasure :  " << cell.treasure << std::endl;
 	os << "Port     :  " << cell.port << std::endl;
