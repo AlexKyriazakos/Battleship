@@ -45,6 +45,8 @@ public:
 	bool	hasShip() const;
 
 	bool	hasTreasure() const;
+
+	void	removeShip();
 	//////////////////////////////////////////////////////////////////////////
 
 	//We make the std::ostream friend in order to let it read and printout

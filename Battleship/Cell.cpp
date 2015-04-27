@@ -57,6 +57,10 @@ Coords Cell::getCoords() const
 	return coords;
 }
 
+void Cell::removeShip()
+{
+	ship = NULL;
+}
 
 //half-implemented << operator
 std::ostream& operator<<(std::ostream& os, const Cell& cell)

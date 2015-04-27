@@ -73,8 +73,8 @@ void Ship::setLocation(Coords location_)
 
 void Ship::setLocation(int x_, int y_)
 {
-	location.col = x_;
-	location.row = y_;
+	location.row = x_;
+	location.col = y_;
 }
 
 int Ship::getTreasure() const

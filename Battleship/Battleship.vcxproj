@@ -66,13 +66,15 @@
   <ItemGroup>
     <ClCompile Include="Cell.cpp" />
     <ClCompile Include="Ship.cpp" />
-    <ClCompile Include="main.cpp" />
+    <ClCompile Include="Map.cpp" />
+    <ClCompile Include="main_2.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="CargoShip.h" />
     <ClInclude Include="Cell.h" />
     <ClInclude Include="Definitions.h" />
     <ClInclude Include="ExplorerShip.h" />
+    <ClInclude Include="Map.h" />
     <ClInclude Include="RepairShip.h" />
     <ClInclude Include="PirateShip.h" />
     <ClInclude Include="Ship.h" />
