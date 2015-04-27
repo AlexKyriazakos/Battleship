@@ -3,13 +3,14 @@
 
 #include "Cell.h"
 #include "Definitions.h"
+#include "Map.h"
 
 #define echo(x) std::cout<<#x<<" = "<<x<<std::endl
 
 
 std::vector< std::vector< Cell> > grid(GRIDSIZE, std::vector<Cell>(GRIDSIZE));
 
-std::vector<Ship*> ships(SHIPS);
+
 
 std::vector<Cell*> findEmptyCells(Ship& ship)
 {
@@ -37,15 +38,16 @@ std::vector<Cell*> findEmptyCells(Ship& ship)
 
 int main()
 {
-	
-	
+
+
 	// Vector example (bad)
 	// http://stackoverflow.com/questions/6491251/multi-dimensional-vector-initialization
 	// explanation
 	//std::vector< std::vector< Cell> > grid(12, std::vector<Cell>(12)); //Same size
 
 	//init ships and place them on the map
-	
+	std::vector<Ship*> ships(SHIPS);
+
 	for (int i = 0; i != ships.size(); i++)
 	{
 		int x, y, t;
@@ -77,7 +79,7 @@ int main()
 		ships[i]->number = i;
 	}
 
-// Insert ports on random locations
+	// Insert ports on random locations
 	for (int i = 0; i != int(PORT*GRIDSIZE*GRIDSIZE); ++i)
 	{
 		int x, y;
@@ -89,7 +91,7 @@ int main()
 		grid[x][y].setPort(true);
 	}
 
-// Insert treasures on random locations
+	// Insert treasures on random locations
 	for (int i = 0; i != int(TREASURE*GRIDSIZE*GRIDSIZE); ++i)
 	{
 		int x, y;
@@ -110,24 +112,56 @@ int main()
 	{
 		for (int j = 0; j != grid.size(); ++j)
 		{
-			grid[i][j].setCoords(Coords(j, i));
-			grid[i][j].setWeather((rand() % 10)+1);
+			grid[i][j].setCoords(Coords(i, j));
+			grid[i][j].setWeather((rand() % 10) + 1);
 			std::cout << grid[i][j] << std::endl;
 			myfile << grid[i][j] << std::endl;
 		}
 	}
 	myfile.close();
 
-	std::cout << *ships[0] << std::endl;
-	ships[0]->move();
-	std::cout << *ships[0] << std::endl;
+	myfile.open("Move1.txt", std::ios::out);
+	for (int i = 0; i != ships.size(); i++)
+	{
+		for (int s = 0; s != ships[i]->getSpeed(); s++)
+		{
+			Coords currentposition(ships[i]->getLocation());
+			//find the empty cells around this ship
+			std::vector<Cell*> neighbours = findEmptyCells(*ships[i]);
 
-	//move to random neighbor
-	std::vector<Cell*> neighbours = findEmptyCells(*ships[0]);
+			//pick a random cell from the empty ones
+			int r = rand() % neighbours.size();
 
-	int r = rand() % neighbours.size();
-	ships[0]->setLocation(neighbours[r]->getCoords());
-	
+			//Remove the ship from its previous cell
+			grid[currentposition.row][currentposition.col].removeShip();
+
+			//Move the ship to its new cell
+			ships[i]->setLocation(neighbours[r]->getCoords());
+			Coords newposition(ships[i]->getLocation());
+			grid[newposition.row][newposition.col].setShip(ships[i]);
+			//myfile << *ships[i];
+			myfile << "[" << currentposition.row << "," << currentposition.col << "] -> "
+				<< "[" << newposition.row << "," << newposition.col << "]" << std::endl;
+		}
+		myfile << std::endl;
+	}
+	myfile.close();
+
+	Map test;
+	test.moveShips();
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 	system("pause");
