@@ -6,20 +6,27 @@
 
 #define echo(x) std::cout<<#x<<" = "<<x<<std::endl
 
-void findEmptyCells(Cell cell)
+
+std::vector< std::vector< Cell> > grid(GRIDSIZE, std::vector<Cell>(GRIDSIZE));
+
+std::vector<Ship*> ships(SHIPS);
+
+std::vector<Cell*> findEmptyCells(Ship& ship)
 {
-	Coords loc(cell.getCoords());
+	std::vector<Cell*> emptyCells;
+	Coords loc(ship.getLocation());
 	for (int i = loc.row - 1; i <= loc.row + 1; ++i)
 	{
 		for (int j = loc.col - 1; j <= loc.col + 1; ++j)
 		{
-
+			if (i >= 0 && i < grid.size() && j >= 0 && j < grid.size() )
+			{
+				if (!grid[i][j].hasShip())
+					emptyCells.push_back(&grid[i][j]);
+			}
 		}
-
-
-
-
 	}
+	return emptyCells;
 }
 
 
@@ -36,11 +43,6 @@ int main()
 	// http://stackoverflow.com/questions/6491251/multi-dimensional-vector-initialization
 	// explanation
 	//std::vector< std::vector< Cell> > grid(12, std::vector<Cell>(12)); //Same size
-
-	std::vector< std::vector< Cell> > grid(GRIDSIZE, std::vector<Cell>(GRIDSIZE));
-
-	
-	std::vector<Ship*> ships(SHIPS);
 
 	//init ships and place them on the map
 	
@@ -120,10 +122,12 @@ int main()
 	ships[0]->move();
 	std::cout << *ships[0] << std::endl;
 
+	//move to random neighbor
+	std::vector<Cell*> neighbours = findEmptyCells(*ships[0]);
 
-
-
-
+	int r = rand() % neighbours.size();
+	ships[0]->setLocation(neighbours[r]->getCoords());
+	
 
 
 	system("pause");
