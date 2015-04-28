@@ -132,3 +132,10 @@ void Map::initCoords()
 		}
 	}
 }
+
+Map::~Map()
+{
+	for (int i = 0; i != ships.size(); i++)
+		delete (ships[i]);
+	ships.clear();
+}
