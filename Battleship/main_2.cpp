@@ -8,11 +8,13 @@
 int main()
 {
 	Map Battleground;
-	Battleground.initCoords();
+	//Battleground.initCoords();
 	Battleground.placeShips();
 	Battleground.placePorts();
 	Battleground.placeTreasure();
 	Battleground.moveShips();
 
+
+	system("pause");
 	return 0;
 }

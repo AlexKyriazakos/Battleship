@@ -24,6 +24,28 @@ std::vector<Cell*> Map::findEmptyCells(Ship& ship)
 	return emptyCells;
 }
 
+std::vector<Cell*> Map::findFullCells(Ship& ship)
+{
+	std::vector<Cell*> fullCells;
+	Coords loc(ship.getLocation());
+	for (int i = loc.row - 1; i <= loc.row + 1; ++i)
+	{
+		for (int j = loc.col - 1; j <= loc.col + 1; ++j)
+		{
+			if (i >= 0 && i < grid.size() && j >= 0 && j < grid.size())
+			{
+				if (grid[i][j].hasShip())
+					fullCells.push_back(&grid[i][j]);
+			}
+		}
+	}
+	return fullCells;
+}
+
+Cell* Map::getCell(int row, int col)
+{
+	return &grid[row][col];
+}
 
 
 void Map::moveShips()
@@ -93,31 +115,37 @@ void Map::placeShips()
 	}
 }
 
-void Map::placePorts()
+void Map::placePorts(double portPercent)
 {
-	for (int i = 0; i != int(PORT*GRIDSIZE*GRIDSIZE); ++i)
+	if (portPercent <= 1)
 	{
-		int x, y;
-		do
+		for (int i = 0; i != int(portPercent*GRIDSIZE*GRIDSIZE); ++i)
 		{
-			x = rand() % grid.size();
-			y = rand() % grid.size();
-		} while (grid[x][y].hasPort());
-		grid[x][y].setPort(true);
+			int x, y;
+			do
+			{
+				x = rand() % grid.size();
+				y = rand() % grid.size();
+			} while (grid[x][y].hasPort());
+			grid[x][y].setPort(true);
+		}
 	}
 }
 
-void Map::placeTreasure()
+void Map::placeTreasure(double treasurePercent)
 {
-	for (int i = 0; i != int(TREASURE*GRIDSIZE*GRIDSIZE); ++i)
+	if (treasurePercent <= 1)
 	{
-		int x, y;
-		do
+		for (int i = 0; i != int(treasurePercent*GRIDSIZE*GRIDSIZE); ++i)
 		{
-			x = rand() % grid.size();
-			y = rand() % grid.size();
-		} while (grid[x][y].hasTreasure());
-		grid[x][y].setTreasure(true);
+			int x, y;
+			do
+			{
+				x = rand() % grid.size();
+				y = rand() % grid.size();
+			} while (grid[x][y].hasTreasure());
+			grid[x][y].setTreasure(true);
+		}
 	}
 }
 
