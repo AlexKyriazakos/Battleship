@@ -2,10 +2,6 @@
 #define GUARD_Cell_h
 
 #include "Ship.h"
-#include "CargoShip.h"
-#include "ExplorerShip.h"
-#include "PirateShip.h"
-#include "RepairShip.h"
 
 class Cell 
 {

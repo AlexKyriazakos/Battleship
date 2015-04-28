@@ -5,17 +5,23 @@
 #include <string>
 #include <vector>
 
-#include "Cell.h"
 #include "Ship.h"
+#include "Cell.h"
 #include "Definitions.h"
-
+#include "CargoShip.h"
+#include "RepairShip.h"
+#include "PirateShip.h"
+#include "ExplorerShip.h"
 
 class Map {
 
 public:
 
 	/** \brief Constructor with default parameters */
-	Map(int size = GRIDSIZE, int shipNum = SHIPS) : grid(size, std::vector<Cell>(size)), ships(shipNum) { initCoords(); }
+	Map(int size = GRIDSIZE, int shipNum = SHIPS) : grid(size, std::vector<Cell>(size)), ships(shipNum) 
+	{
+		initCoords(); 
+	}
 	//NOTE: implement action() on ships. Since the ships will need to ask the Map for info, you need			}   I DO
 	//to pass the Map pointer to each ship, so you should modify the Ship ctor to take a Map* as argument		}    NOT
 	//and use the 2nd vector ctor (num, elem) above e.g. ships(shipNum, Ship(this)) since Ship::Ship(Map* map)	} UNDERSTAND

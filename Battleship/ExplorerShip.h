@@ -1,11 +1,13 @@
-#include "Cell.h"
+#include "Ship.h"
 
+class Map;
 
 class ExplorerShip : public Ship
 {
 
 public:
 
+	ExplorerShip(Map* map_) : Ship(map_) {}
 	//Why virtual again????
 	virtual void action()
 	{

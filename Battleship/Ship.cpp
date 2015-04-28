@@ -45,14 +45,24 @@ void Ship::setSpeed(int speed_)
 	speed = speed_;
 }
 
-Ship::Ship()
+Ship::Ship(Map* map_) :
+	map(map_),
+	location(Coords(0,0)),
+	speed(2),
+	maxHp(100),
+	currentHp(100),
+	treasure(0)
 {
-	location.row = 0;
-	location.col = 0;
-	speed = 2;
-	maxHp = 100;
-	currentHp = maxHp;
-	treasure = 0;
+	shipsCreated++;
+}
+
+Ship::Ship() :
+	location(Coords(0, 0)),
+	speed(2),
+	maxHp(100),
+	currentHp(100),
+	treasure(0)
+{
 	shipsCreated++;
 }
 

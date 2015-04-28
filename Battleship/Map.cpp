@@ -89,20 +89,20 @@ void Map::placeShips()
 		t = rand() % 4;
 		if (t == 0)
 		{
-			ships[i] = new PirateShip;
+			ships[i] = new PirateShip(this);
 			ships[i]->setSpeed(1);
 		}
 		else if (t == 1)
 		{
-			ships[i] = new CargoShip;
+			ships[i] = new CargoShip(this);
 		}
 		else if (t == 2)
 		{
-			ships[i] = new RepairShip;
+			ships[i] = new RepairShip(this);
 		}
 		else if (t == 3)
 		{
-			ships[i] = new ExplorerShip;
+			ships[i] = new ExplorerShip(this);
 		}
 		do
 		{

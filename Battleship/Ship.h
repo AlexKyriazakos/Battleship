@@ -4,6 +4,7 @@
 #include <string>
 #include <vector>
 
+class Map;
 //simple coordinate structure
 struct Coords {
 	int row;
@@ -25,8 +26,9 @@ class Ship {
 
 public:
 
+	Ship();
 	/** \brief Default Constructor */
-	Ship(); //Will need to initialize members
+	Ship(Map* map_); //Will need to initialize members
 
 	// Important
 	/** \brief Destructor */
@@ -81,6 +83,7 @@ protected: //We want derivatives to have access to them, but users not
 	double		treasure;
 	
 	int			speed;
+	Map*		map;
 	
 
 };
