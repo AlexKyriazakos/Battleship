@@ -39,6 +39,7 @@ public:
 	// 3)simple Cell* getCell(int col, int row) since Ships will be placing themselves on new Cells ---- DONE (I think)
 	std::vector<Cell*> findEmptyCells(Ship& ship);
 	std::vector<Cell*> findFullCells(Ship& ship);
+	std::vector<Cell*> findNeighbourCells(Ship& ship);
 	Cell* getCell(int row, int col);
 
 	// This should be called in the ctor  ---- DONE

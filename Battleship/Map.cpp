@@ -42,6 +42,23 @@ std::vector<Cell*> Map::findFullCells(Ship& ship)
 	return fullCells;
 }
 
+std::vector<Cell*> Map::findNeighbourCells(Ship& ship)
+{
+	std::vector<Cell*> NeighbourCells;
+	Coords loc(ship.getLocation());
+	for (int i = loc.row - 1; i <= loc.row + 1; ++i)
+	{
+		for (int j = loc.col - 1; j <= loc.col + 1; ++j)
+		{
+			if (i >= 0 && i < grid.size() && j >= 0 && j < grid.size())
+			{
+				NeighbourCells.push_back(&grid[i][j]);
+			}
+		}
+	}
+	return NeighbourCells;
+}
+
 Cell* Map::getCell(int row, int col)
 {
 	return &grid[row][col];
