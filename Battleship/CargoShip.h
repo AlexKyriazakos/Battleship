@@ -1,6 +1,7 @@
-#include "Ship.h"
+#ifndef GUARD_CargoShip_h
+#define GUARD_CargoShip_h
 
-class Map;
+#include "Ship.h"
 
 class CargoShip : public Ship
 {
@@ -9,12 +10,7 @@ public:
 
 	CargoShip(Map* map_) : Ship(map_){}
 	//Why virtual again????
-	virtual void action()
-	{
-		std::vector<Cell*> neighbourCells = map->findNeighbourCells(*this);
-			
-
-	}
+	virtual void action();
 
 	virtual std::string getName(bool extended) const
 	{
@@ -29,3 +25,4 @@ public:
 	}
 
 };
+#endif // GUARD_CargoShip_h

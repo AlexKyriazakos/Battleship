@@ -64,6 +64,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="CargoShip.cpp" />
     <ClCompile Include="Cell.cpp" />
     <ClCompile Include="Ship.cpp" />
     <ClCompile Include="Map.cpp" />
