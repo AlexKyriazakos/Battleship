@@ -2,14 +2,12 @@ Explorer Ship
 -Speed    :2
 -HP       :0
 -Treasure :22
--Location :[10,9]
+-Location :[9,10]
 -Number   :7
-[11,8] -> [10,9]
 Explorer Ship
 -Speed    :2
 -HP       :0
 -Treasure :22
--Location :[9,10]
+-Location :[10,10]
 -Number   :7
-[10,9] -> [9,10]
 

@@ -66,6 +66,9 @@
   <ItemGroup>
     <ClCompile Include="CargoShip.cpp" />
     <ClCompile Include="Cell.cpp" />
+    <ClCompile Include="ExplorerShip.cpp" />
+    <ClCompile Include="PirateShip.cpp" />
+    <ClCompile Include="RepairShip.cpp" />
     <ClCompile Include="Ship.cpp" />
     <ClCompile Include="Map.cpp" />
     <ClCompile Include="main_2.cpp" />

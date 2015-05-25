@@ -1,3 +1,6 @@
+#ifndef GUARD_RepairShip_h
+#define GUARD_RepairShip_h
+
 #include "Ship.h"
 
 class Map;
@@ -9,10 +12,8 @@ public:
 
 	RepairShip(Map* map_) : Ship(map_) {}
 	//Why virtual again????
-	virtual void action()
-	{
-		//do nothing
-	}
+	virtual void action();
+
 
 	virtual std::string getName(bool extended) const
 	{
@@ -21,9 +22,11 @@ public:
 		return(std::string("R"));
 	}
 
-	virtual int getType()
+	virtual int getType() const
 	{
 		return REPAIR;
 	}
 
 };
+
+#endif

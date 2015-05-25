@@ -32,10 +32,10 @@ std::vector<Cell*> Map::findFullCells(Ship& ship)
 	{
 		for (int j = loc.col - 1; j <= loc.col + 1; ++j)
 		{
-			if (i >= 0 && i < grid.size() && j >= 0 && j < grid.size())
+			if (i >= 0 && i < grid.size() && j >= 0 && j < grid.size() && (!(i == loc.row && j == loc.col)))
 			{
 				if (grid[i][j].hasShip())
-					fullCells.push_back(&grid[i][j]);
+						fullCells.push_back(&grid[i][j]);
 			}
 		}
 	}
@@ -50,7 +50,7 @@ std::vector<Cell*> Map::findNeighbourCells(Ship& ship)
 	{
 		for (int j = loc.col - 1; j <= loc.col + 1; ++j)
 		{
-			if (i >= 0 && i < grid.size() && j >= 0 && j < grid.size())
+			if (i >= 0 && i < grid.size() && j >= 0 && j < grid.size() && (!(i == loc.row && j == loc.col)))
 			{
 				NeighbourCells.push_back(&grid[i][j]);
 			}
@@ -87,7 +87,6 @@ void Map::moveShips()
 			ships[i]->setLocation(neighbours[r]->getCoords());
 			Coords newposition(ships[i]->getLocation());
 			grid[newposition.row][newposition.col].setShip(ships[i]);
-			ships[i]->action();
 			myfile << *ships[i];
 			myfile << "[" << currentposition.row << "," << currentposition.col << "] -> "
 				<< "[" << newposition.row << "," << newposition.col << "]" << std::endl;
@@ -96,6 +95,24 @@ void Map::moveShips()
 	}
 	myfile.close();
 	
+}
+
+void Map::actionShips()
+{
+	std::ofstream myfile;
+	myfile.open("Move3.txt", std::ios::out);
+	for (int i = 0; i != ships.size(); i++)
+	{
+		//Coords currentposition(ships[i]->getLocation());
+		//myfile << ships[i]->getName(1) << "\t\t";
+		//myfile << "[" << currentposition.row << "," << currentposition.col << "] -> ";
+		myfile << *ships[i];
+		ships[i]->action();
+		myfile << *ships[i] << std::endl;
+		//currentposition=ships[i]->getLocation();
+		//myfile << "[" << currentposition.row << "," << currentposition.col << "]" << std::endl;
+
+	}
 }
 
 
@@ -108,7 +125,6 @@ void Map::placeShips()
 		if (t == 0)
 		{
 			ships[i] = new PirateShip(this);
-			ships[i]->setSpeed(1);
 		}
 		else if (t == 1)
 		{
@@ -185,10 +201,53 @@ void Map::checkTreasure()
 		if (grid[currentposition.row][currentposition.col].hasTreasure())
 		{
 			ships[i]->incTreasure(1);
-			grid[currentposition.row][currentposition.col].setTreasure(false);
 		}
 
 	}
+}
+
+void Map::checkPort()
+{
+	for (int i = 0; i != ships.size(); ++i)
+	{
+		Coords currentPosition(ships[i]->getLocation());
+		if (getCell(currentPosition.row, currentPosition.col)->hasPort())
+		{
+			if (ships[i]->getType() != 0)
+				ships[i]->incHP(20);
+			else
+				ships[i]->decHP(15);
+		}
+		if (ships[i]->getType() == 0)
+		{
+			std::vector<Cell*> neighbourCells = findNeighbourCells(*ships[i]);
+			for (int j = 0; j != neighbourCells.size(); ++j)
+			{
+				if (neighbourCells[j]->hasPort())
+					ships[i]->decHP(15);
+			}
+		}
+	}
+}
+
+
+int Map::deadShips()
+{
+	for (int i = 0; i != ships.size(); ++i)
+	{
+		if (ships[i]->getHP() <= 0)
+		{
+			Coords currentPosition(ships[i]->getLocation());
+			grid[currentPosition.row][currentPosition.col].removeShip();
+			ships.erase(ships.begin() + i);
+			i--;
+		}
+		
+	}
+	if (ships.size() == 0)
+		return 1;
+	else
+		return 0;
 }
 
 void Map::initCoords()
@@ -203,6 +262,8 @@ void Map::initCoords()
 	}
 
 }
+
+
 
 Map::~Map()
 {

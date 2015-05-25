@@ -2,6 +2,8 @@
 #include "Definitions.h"
 #include <cstdlib>
 
+#include "PirateShip.h"
+
 int Ship::shipsCreated = 0;
 //Example implementation, real one has to check neighboring cells
 void Ship::move()
@@ -87,7 +89,7 @@ void Ship::setLocation(int x_, int y_)
 	location.col = y_;
 }
 
-int Ship::getTreasure() const
+double Ship::getTreasure() const
 {
 	return treasure;
 }
@@ -97,7 +99,20 @@ Coords Ship::getLocation() const
 	return location;
 }
 
+Coords operator+(const Coords &c1, const Coords &c2)
+{
+	return Coords(c1.row + c2.row, c1.col + c2.col);
+}
 
+Coords operator-(const Coords &c1, const Coords &c2)
+{
+	return Coords(c1.row - c2.row, c1.col - c2.col);
+}
+
+Coords operator+=(Coords &c1, const Coords &c2)
+{
+	return Coords(c1.row + c2.row, c1.col + c2.col);
+}
 
 
 std::ostream& operator<<(std::ostream& os, const Ship& ship)
@@ -108,6 +123,11 @@ std::ostream& operator<<(std::ostream& os, const Ship& ship)
 	os << "-Treasure :" << ship.getTreasure() << std::endl;
 	os << "-Location :[" << ship.location.row << "," << ship.location.col << "]" << std::endl;
 	os << "-Number   :" << ship.number << std::endl;
+	if (ship.getType() == 0)
+	{
+		PirateShip* a = dynamic_cast<PirateShip*>(const_cast<Ship*>(&ship));
+		os << "-Damage   :" << a->getDamage() << std::endl;
+	}
 	return os;
 }
 

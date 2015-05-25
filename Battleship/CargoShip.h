@@ -19,7 +19,7 @@ public:
 		return(std::string("C"));
 	}
 
-	virtual int getType()
+	virtual int getType() const
 	{
 		return CARGO;
 	}

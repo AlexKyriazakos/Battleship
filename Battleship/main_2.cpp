@@ -12,11 +12,19 @@ int main()
 	Battleground.placeShips();
 	Battleground.placePorts();
 	Battleground.placeTreasure();
-	Battleground.checkWeather();
-	Battleground.checkTreasure();
-
+	int i = 0;
+	while (!Battleground.deadShips())
+	{
+		Battleground.checkWeather();
+		Battleground.checkTreasure();
+		Battleground.checkPort();
+		Battleground.moveShips();
+		Battleground.actionShips();
+		i++;
+	}
+	std::cout << "It took " << i << " loops." << std::endl;
 	std::ofstream myfile;
-	myfile.open("Grid.txt", std::ios::out);
+	myfile.open("Grid6.txt", std::ios::out);
 	for (int i = 0; i != GRIDSIZE; ++i)
 	{
 		for (int j = 0; j != GRIDSIZE; ++j)
@@ -25,9 +33,6 @@ int main()
 		}
 	}
 	myfile.close();
-	Battleground.moveShips();
-
-
 	system("pause");
 	return 0;
 }

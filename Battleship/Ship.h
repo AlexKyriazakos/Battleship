@@ -11,8 +11,19 @@ struct Coords {
 	int col;
 
 	Coords() {}
-	Coords(int x,int y) { row = x; col=y; }
+	Coords(int x, int y) { row = x; col = y; }
+
+	//friend Coords operator-(const Coords &c1, const Coords &c2);
+	//friend Coords operator+(const Coords &c1, const Coords &c2);
+	//friend Coords operator+=(const Coords &c1, const Coords &c2);
 };
+
+Coords operator+(const Coords &c1, const Coords &c2);
+
+Coords operator-(const Coords &c1, const Coords &c2);
+
+Coords operator+=(Coords &c1, const Coords &c2);
+
 
 enum ShipType{
 	PIRATE = 0,
@@ -43,7 +54,7 @@ public:
 
 	virtual std::string getName(bool extended) const = 0;
 
-	virtual int getType() = 0;
+	virtual int getType() const  = 0; 
 
 	//////////////////////////////////////////////////////////////////////////
 	// Setters/Getters
@@ -56,7 +67,7 @@ public:
 
 	void decTreasure(double treasure_);
 
-	int getTreasure() const;
+	double getTreasure() const;
 
 	void incHP(double hp_);
 

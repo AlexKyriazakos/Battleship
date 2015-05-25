@@ -31,13 +31,7 @@ Location :  [0,4]
 Weather  :  10
 Treasure :  0
 Port     :  0
-The Cell has a Explorer Ship
--Speed    :2
--HP       :80
--Treasure :0
--Location :[0,4]
--Number   :11
-
+The Cell is empty
 
 Cell 
 Location :  [0,5]
@@ -72,7 +66,13 @@ Location :  [0,9]
 Weather  :  5
 Treasure :  0
 Port     :  0
-The Cell is empty
+The Cell has a Cargo Ship
+-Speed    :2
+-HP       :100
+-Treasure :2
+-Location :[0,9]
+-Number   :17
+
 
 Cell 
 Location :  [0,10]
@@ -149,7 +149,13 @@ Location :  [1,8]
 Weather  :  2
 Treasure :  0
 Port     :  0
-The Cell is empty
+The Cell has a Repair Ship
+-Speed    :2
+-HP       :80
+-Treasure :0
+-Location :[1,8]
+-Number   :8
+
 
 Cell 
 Location :  [1,9]
@@ -163,13 +169,7 @@ Location :  [1,10]
 Weather  :  3
 Treasure :  0
 Port     :  0
-The Cell has a Cargo Ship
--Speed    :2
--HP       :100
--Treasure :0
--Location :[1,10]
--Number   :17
-
+The Cell is empty
 
 Cell 
 Location :  [1,11]
@@ -211,14 +211,7 @@ Location :  [2,4]
 Weather  :  9
 Treasure :  0
 Port     :  0
-The Cell has a Pirate Ship
--Speed    :1
--HP       :50
--Treasure :0
--Location :[2,4]
--Number   :9
--Damage   :20
-
+The Cell is empty
 
 Cell 
 Location :  [2,5]
@@ -239,13 +232,7 @@ Location :  [2,7]
 Weather  :  7
 Treasure :  0
 Port     :  0
-The Cell has a Repair Ship
--Speed    :2
--HP       :80
--Treasure :0
--Location :[2,7]
--Number   :8
-
+The Cell is empty
 
 Cell 
 Location :  [2,8]
@@ -308,7 +295,14 @@ Location :  [3,4]
 Weather  :  4
 Treasure :  0
 Port     :  1
-The Cell is empty
+The Cell has a Pirate Ship
+-Speed    :1
+-HP       :50
+-Treasure :0
+-Location :[3,4]
+-Number   :9
+-Damage   :20
+
 
 Cell 
 Location :  [3,5]
@@ -322,7 +316,13 @@ Location :  [3,6]
 Weather  :  3
 Treasure :  0
 Port     :  0
-The Cell is empty
+The Cell has a Explorer Ship
+-Speed    :2
+-HP       :80
+-Treasure :0
+-Location :[3,6]
+-Number   :11
+
 
 Cell 
 Location :  [3,7]
@@ -378,7 +378,13 @@ Location :  [4,2]
 Weather  :  8
 Treasure :  0
 Port     :  0
-The Cell is empty
+The Cell has a Repair Ship
+-Speed    :2
+-HP       :80
+-Treasure :2
+-Location :[4,2]
+-Number   :1
+
 
 Cell 
 Location :  [4,3]
@@ -427,7 +433,13 @@ Location :  [4,9]
 Weather  :  2
 Treasure :  0
 Port     :  0
-The Cell is empty
+The Cell has a Explorer Ship
+-Speed    :2
+-HP       :70
+-Treasure :0
+-Location :[4,9]
+-Number   :7
+
 
 Cell 
 Location :  [4,10]
@@ -448,13 +460,7 @@ Location :  [5,0]
 Weather  :  7
 Treasure :  1
 Port     :  0
-The Cell has a Repair Ship
--Speed    :2
--HP       :80
--Treasure :1
--Location :[5,0]
--Number   :1
-
+The Cell is empty
 
 Cell 
 Location :  [5,1]
@@ -463,8 +469,8 @@ Treasure :  0
 Port     :  0
 The Cell has a Cargo Ship
 -Speed    :2
--HP       :100
--Treasure :0
+-HP       :130
+-Treasure :1
 -Location :[5,1]
 -Number   :0
 
@@ -516,14 +522,7 @@ Location :  [5,8]
 Weather  :  5
 Treasure :  0
 Port     :  0
-The Cell has a Pirate Ship
--Speed    :1
--HP       :100
--Treasure :0
--Location :[5,8]
--Number   :6
--Damage   :20
-
+The Cell is empty
 
 Cell 
 Location :  [5,9]
@@ -567,10 +566,10 @@ Treasure :  0
 Port     :  0
 The Cell has a Explorer Ship
 -Speed    :2
--HP       :100
+-HP       :70
 -Treasure :0
 -Location :[6,2]
--Number   :13
+-Number   :15
 
 
 Cell 
@@ -592,27 +591,34 @@ Location :  [6,5]
 Weather  :  2
 Treasure :  0
 Port     :  0
-The Cell has a Cargo Ship
--Speed    :2
--HP       :100
--Treasure :0
--Location :[6,5]
--Number   :12
-
+The Cell is empty
 
 Cell 
 Location :  [6,6]
 Weather  :  4
 Treasure :  0
 Port     :  1
-The Cell is empty
+The Cell has a Cargo Ship
+-Speed    :2
+-HP       :100
+-Treasure :2
+-Location :[6,6]
+-Number   :12
+
 
 Cell 
 Location :  [6,7]
 Weather  :  9
 Treasure :  0
 Port     :  0
-The Cell is empty
+The Cell has a Pirate Ship
+-Speed    :1
+-HP       :100
+-Treasure :0
+-Location :[6,7]
+-Number   :6
+-Damage   :20
+
 
 Cell 
 Location :  [6,8]
@@ -640,7 +646,14 @@ Location :  [6,11]
 Weather  :  5
 Treasure :  0
 Port     :  0
-The Cell is empty
+The Cell has a Pirate Ship
+-Speed    :1
+-HP       :80
+-Treasure :0
+-Location :[6,11]
+-Number   :16
+-Damage   :20
+
 
 Cell 
 Location :  [7,0]
@@ -661,7 +674,13 @@ Location :  [7,2]
 Weather  :  7
 Treasure :  0
 Port     :  0
-The Cell is empty
+The Cell has a Explorer Ship
+-Speed    :2
+-HP       :100
+-Treasure :0
+-Location :[7,2]
+-Number   :13
+
 
 Cell 
 Location :  [7,3]
@@ -675,7 +694,13 @@ Location :  [7,4]
 Weather  :  2
 Treasure :  0
 Port     :  0
-The Cell is empty
+The Cell has a Explorer Ship
+-Speed    :2
+-HP       :70
+-Treasure :0
+-Location :[7,4]
+-Number   :19
+
 
 Cell 
 Location :  [7,5]
@@ -710,12 +735,12 @@ Location :  [7,9]
 Weather  :  4
 Treasure :  0
 Port     :  0
-The Cell has a Explorer Ship
+The Cell has a Cargo Ship
 -Speed    :2
--HP       :100
--Treasure :0
+-HP       :80
+-Treasure :2
 -Location :[7,9]
--Number   :7
+-Number   :18
 
 
 Cell 
@@ -730,34 +755,28 @@ Location :  [7,11]
 Weather  :  9
 Treasure :  0
 Port     :  0
-The Cell has a Pirate Ship
--Speed    :1
--HP       :80
--Treasure :0
--Location :[7,11]
--Number   :16
--Damage   :20
-
+The Cell is empty
 
 Cell 
 Location :  [8,0]
 Weather  :  9
 Treasure :  0
 Port     :  1
-The Cell is empty
+The Cell has a Pirate Ship
+-Speed    :1
+-HP       :85
+-Treasure :0
+-Location :[8,0]
+-Number   :10
+-Damage   :20
+
 
 Cell 
 Location :  [8,1]
 Weather  :  3
 Treasure :  0
 Port     :  0
-The Cell has a Explorer Ship
--Speed    :2
--HP       :100
--Treasure :0
--Location :[8,1]
--Number   :15
-
+The Cell is empty
 
 Cell 
 Location :  [8,2]
@@ -785,13 +804,7 @@ Location :  [8,5]
 Weather  :  6
 Treasure :  0
 Port     :  0
-The Cell has a Explorer Ship
--Speed    :2
--HP       :100
--Treasure :0
--Location :[8,5]
--Number   :19
-
+The Cell is empty
 
 Cell 
 Location :  [8,6]
@@ -805,14 +818,7 @@ Location :  [8,7]
 Weather  :  9
 Treasure :  0
 Port     :  0
-The Cell has a Pirate Ship
--Speed    :1
--HP       :65
--Treasure :0
--Location :[8,7]
--Number   :14
--Damage   :20
-
+The Cell is empty
 
 Cell 
 Location :  [8,8]
@@ -840,27 +846,14 @@ Location :  [8,11]
 Weather  :  7
 Treasure :  0
 Port     :  0
-The Cell has a Cargo Ship
--Speed    :2
--HP       :80
--Treasure :0
--Location :[8,11]
--Number   :18
-
+The Cell is empty
 
 Cell 
 Location :  [9,0]
 Weather  :  4
 Treasure :  0
 Port     :  0
-The Cell has a Pirate Ship
--Speed    :1
--HP       :85
--Treasure :0
--Location :[9,0]
--Number   :10
--Damage   :20
-
+The Cell is empty
 
 Cell 
 Location :  [9,1]
@@ -902,7 +895,14 @@ Location :  [9,6]
 Weather  :  1
 Treasure :  0
 Port     :  0
-The Cell is empty
+The Cell has a Pirate Ship
+-Speed    :1
+-HP       :35
+-Treasure :0
+-Location :[9,6]
+-Number   :14
+-Damage   :20
+
 
 Cell 
 Location :  [9,7]
@@ -916,13 +916,7 @@ Location :  [9,8]
 Weather  :  8
 Treasure :  0
 Port     :  0
-The Cell has a Repair Ship
--Speed    :2
--HP       :80
--Treasure :0
--Location :[9,8]
--Number   :3
-
+The Cell is empty
 
 Cell 
 Location :  [9,9]
@@ -950,7 +944,13 @@ Location :  [10,0]
 Weather  :  7
 Treasure :  0
 Port     :  0
-The Cell is empty
+The Cell has a Repair Ship
+-Speed    :2
+-HP       :120
+-Treasure :0
+-Location :[10,0]
+-Number   :2
+
 
 Cell 
 Location :  [10,1]
@@ -964,13 +964,7 @@ Location :  [10,2]
 Weather  :  2
 Treasure :  0
 Port     :  1
-The Cell has a Repair Ship
--Speed    :2
--HP       :120
--Treasure :0
--Location :[10,2]
--Number   :2
-
+The Cell is empty
 
 Cell 
 Location :  [10,3]
@@ -991,7 +985,14 @@ Location :  [10,5]
 Weather  :  8
 Treasure :  0
 Port     :  1
-The Cell is empty
+The Cell has a Pirate Ship
+-Speed    :1
+-HP       :50
+-Treasure :0
+-Location :[10,5]
+-Number   :4
+-Damage   :20
+
 
 Cell 
 Location :  [10,6]
@@ -1012,7 +1013,13 @@ Location :  [10,8]
 Weather  :  2
 Treasure :  0
 Port     :  0
-The Cell is empty
+The Cell has a Repair Ship
+-Speed    :2
+-HP       :80
+-Treasure :0
+-Location :[10,8]
+-Number   :3
+
 
 Cell 
 Location :  [10,9]
@@ -1033,13 +1040,7 @@ Location :  [10,11]
 Weather  :  1
 Treasure :  0
 Port     :  1
-The Cell has a Explorer Ship
--Speed    :2
--HP       :120
--Treasure :0
--Location :[10,11]
--Number   :5
-
+The Cell is empty
 
 Cell 
 Location :  [11,0]
@@ -1088,14 +1089,7 @@ Location :  [11,6]
 Weather  :  8
 Treasure :  0
 Port     :  0
-The Cell has a Pirate Ship
--Speed    :1
--HP       :50
--Treasure :0
--Location :[11,6]
--Number   :4
--Damage   :20
-
+The Cell is empty
 
 Cell 
 Location :  [11,7]
@@ -1123,7 +1117,13 @@ Location :  [11,10]
 Weather  :  4
 Treasure :  0
 Port     :  0
-The Cell is empty
+The Cell has a Explorer Ship
+-Speed    :2
+-HP       :120
+-Treasure :0
+-Location :[11,10]
+-Number   :5
+
 
 Cell 
 Location :  [11,11]

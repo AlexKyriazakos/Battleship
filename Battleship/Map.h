@@ -57,12 +57,18 @@ public:
 	//if the above is implemented, the Ships should now move themselves and ask the Map for possible
 	//destinations, so this will be reduced to : for all ships -> ship.move();
 	void moveShips();
+	void actionShips();
 
 	//Get the Weather damage
 	void checkWeather();
 
 	//Get the Treasure
 	void checkTreasure();
+
+	//Check if any ships are in/near ports
+	void checkPort();
+
+	int deadShips();
 
 	//Try to implement a full update cycle:
 	// 1. move, 2.action, 3.remove dead ships, 4. check for winner (treasure target), 0.apply weather damage and treasure increase
