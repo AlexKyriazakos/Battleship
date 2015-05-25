@@ -1,15 +1,90 @@
+Cargo Ship
+-Speed    :2
+-HP       :120
+-Treasure :214
+-Location :[1,6]
+-Number   :0
+[0,6] -> [1,6]
+Cargo Ship
+-Speed    :2
+-HP       :120
+-Treasure :214
+-Location :[2,7]
+-Number   :0
+[1,6] -> [2,7]
+
 Explorer Ship
 -Speed    :2
--HP       :0
--Treasure :22
+-HP       :100
+-Treasure :1
 -Location :[10,9]
 -Number   :7
-[11,8] -> [10,9]
+[11,10] -> [10,9]
 Explorer Ship
 -Speed    :2
--HP       :0
--Treasure :22
--Location :[9,10]
+-HP       :100
+-Treasure :1
+-Location :[9,8]
 -Number   :7
-[10,9] -> [9,10]
+[10,9] -> [9,8]
+
+Cargo Ship
+-Speed    :2
+-HP       :10
+-Treasure :80.5
+-Location :[11,7]
+-Number   :12
+[10,7] -> [11,7]
+Cargo Ship
+-Speed    :2
+-HP       :10
+-Treasure :80.5
+-Location :[10,7]
+-Number   :12
+[11,7] -> [10,7]
+
+Explorer Ship
+-Speed    :2
+-HP       :120
+-Treasure :1
+-Location :[10,9]
+-Number   :13
+[11,9] -> [10,9]
+Explorer Ship
+-Speed    :2
+-HP       :120
+-Treasure :1
+-Location :[11,9]
+-Number   :13
+[10,9] -> [11,9]
+
+Explorer Ship
+-Speed    :2
+-HP       :250
+-Treasure :3
+-Location :[5,9]
+-Number   :15
+[4,9] -> [5,9]
+Explorer Ship
+-Speed    :2
+-HP       :250
+-Treasure :3
+-Location :[4,10]
+-Number   :15
+[5,9] -> [4,10]
+
+Cargo Ship
+-Speed    :2
+-HP       :40
+-Treasure :128
+-Location :[6,2]
+-Number   :17
+[5,1] -> [6,2]
+Cargo Ship
+-Speed    :2
+-HP       :40
+-Treasure :128
+-Location :[5,2]
+-Number   :17
+[6,2] -> [5,2]
 

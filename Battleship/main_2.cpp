@@ -2,6 +2,7 @@
 #include <fstream>
 
 #include "Map.h"
+#include "Utils.h"
 
 #define echo(x) std::cout<<#x<<" = "<<x<<std::endl
 
@@ -21,6 +22,31 @@ int main()
 		Battleground.moveShips();
 		Battleground.actionShips();
 		i++;
+		//////////////////////////////////////////////////////////////////////////
+		// Minimal example of getAsyncKey usage
+		if (getAsyncKey() == 'p') //if player presses "p"
+		{
+			clearScreen();
+			std::cout << "You just paused" << std::endl;
+
+			//offer an option
+			std::cout << "Press Space(' ') to continue" << std::endl;
+
+			//wait forever until he presses space
+			while (1)
+			{
+				int k = tolower(_getch());
+				if (k == ' ') //if key is space continue
+					break;
+			}
+		}
+
+		//Also add a little pause and print current round
+		Sleep(200); //sleep 200ms
+		clearScreen();
+		std::cout << "Round: " << i << std::endl;
+		//Boom!
+		//////////////////////////////////////////////////////////////////////////
 	}
 	std::cout << "It took " << i << " loops." << std::endl;
 	std::ofstream myfile;
