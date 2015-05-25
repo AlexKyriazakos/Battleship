@@ -87,7 +87,8 @@ void Map::moveShips()
 			ships[i]->setLocation(neighbours[r]->getCoords());
 			Coords newposition(ships[i]->getLocation());
 			grid[newposition.row][newposition.col].setShip(ships[i]);
-			//myfile << *ships[i];
+			ships[i]->action();
+			myfile << *ships[i];
 			myfile << "[" << currentposition.row << "," << currentposition.col << "] -> "
 				<< "[" << newposition.row << "," << newposition.col << "]" << std::endl;
 		}
@@ -166,6 +167,30 @@ void Map::placeTreasure(double treasurePercent)
 	}
 }
 
+void Map::checkWeather()
+{
+	for (int i = 0; i != ships.size(); i++)
+	{
+		Coords currentposition(ships[i]->getLocation());
+		if (grid[currentposition.row][currentposition.col].getWeather() > 6)
+			ships[i]->decHP(20);
+	}
+}
+
+void Map::checkTreasure()
+{
+	for (int i = 0; i != ships.size(); i++)
+	{
+		Coords currentposition(ships[i]->getLocation());
+		if (grid[currentposition.row][currentposition.col].hasTreasure())
+		{
+			ships[i]->incTreasure(1);
+			grid[currentposition.row][currentposition.col].setTreasure(false);
+		}
+
+	}
+}
+
 void Map::initCoords()
 {
 	for (int i = 0; i != grid.size(); ++i)
@@ -176,6 +201,7 @@ void Map::initCoords()
 			grid[i][j].setWeather((rand() % 10) + 1);
 		}
 	}
+
 }
 
 Map::~Map()
