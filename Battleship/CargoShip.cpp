@@ -1,7 +1,6 @@
 #include "CargoShip.h"
 #include "Map.h"
 
-class Cell;
 
 void CargoShip::action()
 {
