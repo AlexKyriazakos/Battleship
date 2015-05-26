@@ -264,6 +264,98 @@ void Map::initCoords()
 }
 
 
+void Map::printInfo()
+{
+	std::cout << "          SHIPS" << std::endl;
+	for (int i = 0; i != GRIDSIZE + 2; ++i)
+	{
+		if (i == 0)
+			std::cout << "  |0|1|2|3|4|5|6|7|8|9|" << std::endl;
+		if (i == 1)
+			std::cout << "-----------------------" << std::endl;
+		if (i > 1)
+		{
+			std::cout << i - 2 << " |";
+			for (int j = 0; j != GRIDSIZE; ++j)
+			{
+				if (grid[i - 2][j].getShip())
+					std::cout << grid[i - 2][j].getShip()->getName(false) << "|";
+				else
+					std::cout << " |";
+			}
+			std::cout << std::endl;
+		}
+
+	}
+	std::cout << "        WEATHER" << std::endl;
+	for (int i = 0; i != GRIDSIZE + 2; ++i)
+	{
+		if (i == 0)
+			std::cout << "  |0|1|2|3|4|5|6|7|8|9|" << std::endl;
+		if (i == 1)
+			std::cout << "-----------------------" << std::endl;
+		if (i > 1)
+		{
+			std::cout << i - 2 << " |";
+			for (int j = 0; j != GRIDSIZE; ++j)
+			{
+				std::cout << grid[i - 2][j].getWeather() - 1 << "|";
+			}
+			std::cout << std::endl;
+		}
+
+	}
+
+	std::cout << "          PORTS" << std::endl;
+	for (int i = 0; i != GRIDSIZE + 2; ++i)
+	{
+		if (i == 0)
+			std::cout << "  |0|1|2|3|4|5|6|7|8|9|" << std::endl;
+		if (i == 1)
+			std::cout << "-----------------------" << std::endl;
+		if (i > 1)
+		{
+			std::cout << i - 2 << " |";
+			for (int j = 0; j != GRIDSIZE; ++j)
+			{
+				if (grid[i - 2][j].hasPort())
+					std::cout << "P|";
+				else
+					std::cout << " |";
+			}
+			std::cout << std::endl;
+		}
+
+	}
+
+	std::cout << "        TREASURE" << std::endl;
+	for (int i = 0; i != GRIDSIZE + 2; ++i)
+	{
+		if (i == 0)
+			std::cout << "  |0|1|2|3|4|5|6|7|8|9|" << std::endl;
+		if (i == 1)
+			std::cout << "-----------------------" << std::endl;
+		if (i > 1)
+		{
+			std::cout << i - 2 << " |";
+			for (int j = 0; j != GRIDSIZE; ++j)
+			{
+				if (grid[i - 2][j].hasTreasure())
+					std::cout << "T|";
+				else
+					std::cout << " |";
+			}
+			std::cout << std::endl;
+		}
+
+	}
+}
+
+
+
+
+
+
 
 Map::~Map()
 {
@@ -271,3 +363,5 @@ Map::~Map()
 		delete (ships[i]);
 	ships.clear();
 }
+
+

@@ -70,6 +70,8 @@ public:
 
 	int deadShips();
 
+	void printInfo();
+
 	//Try to implement a full update cycle:
 	// 1. move, 2.action, 3.remove dead ships, 4. check for winner (treasure target), 0.apply weather damage and treasure increase
 	// 1,2 are ship responsibility
