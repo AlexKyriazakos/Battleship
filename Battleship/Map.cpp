@@ -67,15 +67,17 @@ Cell* Map::getCell(int row, int col)
 
 void Map::moveShips()
 {
+	Ship* cur;
 	std::ofstream myfile;
 	myfile.open("Move2.txt", std::ios::out);
-	for (int i = 0; i != ships.size(); i++)
+	for (std::list<Ship*>::iterator it = ships.begin(); it != ships.end(); ++it)
 	{
-		for (int s = 0; s != ships[i]->getSpeed(); s++)
+		cur = *it;
+		for (int s = 0; s != cur->getSpeed(); s++)
 		{
-			Coords currentposition(ships[i]->getLocation());
+			Coords currentposition(cur->getLocation());
 			//find the empty cells around this ship
-			std::vector<Cell*> neighbours = findEmptyCells(*ships[i]);
+			std::vector<Cell*> neighbours = findEmptyCells(*cur);
 
 			//pick a random cell from the empty ones
 			int r = rand() % neighbours.size();
@@ -84,10 +86,10 @@ void Map::moveShips()
 			grid[currentposition.row][currentposition.col].removeShip();
 
 			//Move the ship to its new cell
-			ships[i]->setLocation(neighbours[r]->getCoords());
-			Coords newposition(ships[i]->getLocation());
-			grid[newposition.row][newposition.col].setShip(ships[i]);
-			myfile << *ships[i];
+			cur->setLocation(neighbours[r]->getCoords());
+			Coords newposition(cur->getLocation());
+			grid[newposition.row][newposition.col].setShip(cur);
+			myfile << *cur;
 			myfile << "[" << currentposition.row << "," << currentposition.col << "] -> "
 				<< "[" << newposition.row << "," << newposition.col << "]" << std::endl;
 		}
@@ -99,16 +101,18 @@ void Map::moveShips()
 
 void Map::actionShips()
 {
+	Ship* cur;
 	std::ofstream myfile;
 	myfile.open("Move3.txt", std::ios::out);
-	for (int i = 0; i != ships.size(); i++)
+	for (std::list<Ship*>::iterator it = ships.begin(); it != ships.end(); ++it)
 	{
+		cur = *it;
 		//Coords currentposition(ships[i]->getLocation());
 		//myfile << ships[i]->getName(1) << "\t\t";
 		//myfile << "[" << currentposition.row << "," << currentposition.col << "] -> ";
-		myfile << *ships[i];
-		ships[i]->action();
-		myfile << *ships[i] << std::endl;
+		myfile << *cur;
+		cur->action();
+		myfile << *cur << std::endl;
 		//currentposition=ships[i]->getLocation();
 		//myfile << "[" << currentposition.row << "," << currentposition.col << "]" << std::endl;
 
@@ -118,34 +122,40 @@ void Map::actionShips()
 
 void Map::placeShips()
 {
-	for (int i = 0; i != ships.size(); i++)
+	int i = 0;
+	Ship* cur;
+	for (std::list<Ship*>::iterator it = ships.begin(); it != ships.end(); ++it)
 	{
 		int x, y, t;
 		t = rand() % 4;
+		cur = *it;
 		if (t == 0)
 		{
-			ships[i] = new PirateShip(this);
+			cur = new PirateShip(this);
 		}
 		else if (t == 1)
 		{
-			ships[i] = new CargoShip(this);
+			cur = new CargoShip(this);
 		}
 		else if (t == 2)
 		{
-			ships[i] = new RepairShip(this);
+			cur = new RepairShip(this);
 		}
 		else if (t == 3)
 		{
-			ships[i] = new ExplorerShip(this);
+			cur = new ExplorerShip(this);
 		}
 		do
 		{
 			x = rand() % grid.size();
 			y = rand() % grid.size();
 		} while (grid[x][y].hasShip());
-		grid[x][y].setShip(ships[i]);
-		ships[i]->setLocation(x, y);
-		ships[i]->number = i;
+		grid[x][y].setShip(*it);
+		cur->setLocation(x, y);
+		cur->number = i;
+		++i;
+		std::cout << cur->getName(true) << std::endl;
+		
 	}
 }
 
@@ -185,22 +195,26 @@ void Map::placeTreasure(double treasurePercent)
 
 void Map::checkWeather()
 {
-	for (int i = 0; i != ships.size(); i++)
+	Ship* cur;
+	for (std::list<Ship*>::iterator it = ships.begin(); it != ships.end(); ++it)
 	{
-		Coords currentposition(ships[i]->getLocation());
+		cur = *it;
+		Coords currentposition(cur->getLocation());
 		if (grid[currentposition.row][currentposition.col].getWeather() > 6)
-			ships[i]->decHP(20);
+			cur->decHP(20);
 	}
 }
 
 void Map::checkTreasure()
 {
-	for (int i = 0; i != ships.size(); i++)
+	Ship* cur;
+	for (std::list<Ship*>::iterator it = ships.begin(); it != ships.end(); ++it)
 	{
-		Coords currentposition(ships[i]->getLocation());
+		cur = *it;
+		Coords currentposition(cur->getLocation());
 		if (grid[currentposition.row][currentposition.col].hasTreasure())
 		{
-			ships[i]->incTreasure(1);
+			cur->incTreasure(1);
 		}
 
 	}
@@ -208,23 +222,25 @@ void Map::checkTreasure()
 
 void Map::checkPort()
 {
-	for (int i = 0; i != ships.size(); ++i)
+	Ship* cur;
+	for (std::list<Ship*>::iterator it = ships.begin(); it != ships.end(); ++it)
 	{
-		Coords currentPosition(ships[i]->getLocation());
+		cur = *it;
+		Coords currentPosition(cur->getLocation());
 		if (getCell(currentPosition.row, currentPosition.col)->hasPort())
 		{
-			if (ships[i]->getType() != 0)
-				ships[i]->incHP(20);
+			if (cur->getType() != 0)
+				cur->incHP(20);
 			else
-				ships[i]->decHP(15);
+				cur->decHP(15);
 		}
-		if (ships[i]->getType() == 0)
+		if (cur->getType() == 0)
 		{
-			std::vector<Cell*> neighbourCells = findNeighbourCells(*ships[i]);
+			std::vector<Cell*> neighbourCells = findNeighbourCells(*cur);
 			for (int j = 0; j != neighbourCells.size(); ++j)
 			{
 				if (neighbourCells[j]->hasPort())
-					ships[i]->decHP(15);
+					cur->decHP(15);
 			}
 		}
 	}
@@ -233,14 +249,15 @@ void Map::checkPort()
 
 int Map::deadShips()
 {
-	for (int i = 0; i != ships.size(); ++i)
+	Ship* cur;
+	for (std::list<Ship*>::iterator it = ships.begin(); it != ships.end(); ++it)
 	{
-		if (ships[i]->getHP() <= 0)
+		cur = *it;
+		if ((cur->getHP()) <= 0)
 		{
-			Coords currentPosition(ships[i]->getLocation());
+			Coords currentPosition(cur->getLocation());
 			grid[currentPosition.row][currentPosition.col].removeShip();
-			ships.erase(ships.begin() + i);
-			i--;
+			ships.erase(it);
 		}
 		
 	}
@@ -359,8 +376,12 @@ void Map::printInfo()
 
 Map::~Map()
 {
-	for (int i = 0; i != ships.size(); i++)
-		delete (ships[i]);
+	Ship* cur;
+	for (std::list<Ship*>::iterator it = ships.begin(); it != ships.end(); ++it)
+	{
+		cur = *it;
+		delete (cur);
+	}
 	ships.clear();
 }
 

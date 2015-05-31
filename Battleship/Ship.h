@@ -87,6 +87,7 @@ public:
 
 	Coords		location;
 	int			number;
+	
 protected: //We want derivatives to have access to them, but users not
 
 	double		currentHp;

@@ -4,6 +4,7 @@
 
 #include <string>
 #include <vector>
+#include <list>
 
 #include "Ship.h"
 #include "Cell.h"
@@ -31,7 +32,7 @@ public:
 
 	std::vector< std::vector<Cell> > grid;
 
-	std::vector<Ship*> ships;
+	std::list<Ship*> ships;
 
 	//Should make similar methods (for ships to use) that return:
 	// 1)neighboring ships (speed argument?) ---- Can't we just getShip() from the *Cell vector?

@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 2.8 FATAL_ERROR)
-#****************************************
+#*****************************************
 # Battleship project
 # Alex Kyriazakos
 #*****************************************
@@ -29,6 +29,7 @@ add_executable(BattleShip
 #set executable to be generated in lower case (optional)
 string(TOLOWER BattleShip _filename)
 set_target_properties(BattleShip PROPERTIES OUTPUT_NAME ${_filename})
+
 #Create separate folder for Headers (only for the IDE)
 source_group("Headers" FILES ${${_program}_HDR_FILES})
 		
